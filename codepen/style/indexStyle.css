@@ -1,0 +1,44 @@
+.click{
+  margin:1px;
+  background:	#5555FF;
+  width:180px;
+  height:25px;
+  display:inline-block;
+}
+#date{
+  margin:1px;
+  background:	#5555FF;
+  width:180px;
+  height:25px;
+  display:inline-block;
+  
+}
+
+.intro{
+  as
+  margin:5px;
+  background:#FFFFBB;
+  height:300px;
+  width:920px;
+}
+
+#map{
+  margin:5px;
+  background:#00DD00;
+  height:308px;
+  width:504px;
+}
+.big{
+  display:inline-block;
+  vertical-align:top;
+  margin:3px;
+}
+.small{
+  margin-top:2px;
+  margin-bottom:2px;
+  background:pink;
+  width:200px;
+  height:100px;
+  display:inline-block;
+  vertical-align:top;
+}
