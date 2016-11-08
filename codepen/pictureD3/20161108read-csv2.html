@@ -35,14 +35,14 @@ d3.csv("./stocks.csv",
 	    var x = d3.scaleTime().range([0, width]);
         var y = d3.scaleLinear().range([height, 0]);
 	    var valueline = d3.line()
-        x(
+        .x(
 			function(d,i) 
 			{ 
 				xset = (width/ln) * i;
 				console.log(xset)
 				return xset;
 			}).
-		y(
+		.y(
 			function(d) 
 			{ 
 				yset = d.close;
