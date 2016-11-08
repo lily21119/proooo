@@ -22,15 +22,19 @@ d3.csv("./stocks.csv",
 			}
 		);
 	    
+
+	    在body裡，弄了個畫布(ctrl)，為了用d3控制，附加一個svg，後面是它的特性(attr)，
 	    var ctrl = d3.select("body").append("svg").attr("width", 800).attr("height", 600);
 	    var x = d3.scaleTime().range([0, width]);
         var y = d3.scaleLinear().range([height, 0]);
 	    var valueline = d3.line()
         x(function(d) { return x(d.date); })
         y(function(d) { return y(d.close); });
-       
+
+       在ctrl裡順便交給d3控制，所以就再附加一個path(畫線用)，後面是它的特性
        ctrl.append("path").
        data([data]).
+       表示class=line，裡面還有一個d，至於d=什麼還沒定義，這些設定以方便之後d3控制
        attr("class","line").
        attr("d",valueline);
 
