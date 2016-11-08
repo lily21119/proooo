@@ -1,0 +1,28 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1477379064650.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "C4D17C20",
+    "lastKnownWriteTime" : 8389754659302220320,
+    "last_content_update" : 1477379064650,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "c4rd531soz",
+        "caption" : "nextgroups",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=nextgroups&cache_key=c4rd531soz",
+        "displayedObservations" : 2,
+        "environment" : "",
+        "object" : "nextgroups",
+        "totalObservations" : 2,
+        "variables" : 1
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

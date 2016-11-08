@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "install.packages(\"Rfacebook\")\nlibrary(\"Rfacebook\")\nrequire(\"Rfacebook\")\nfb.oauth <- fbOAuth(\n  app_id=\"201487613619376\",\n  app_secret=\"7f7395f8d72c390f648359196827722a\",\n  extended_permissions = TRUE)\nsave(fb.oauth,file =\"fb.oauth\")\nme <- getUsers(\"me\",token=fb.oauth)\nme$name\n\ngetFriends(token, simplify = FALSE)\nsearchGroup(\"PecuClub\", fb.oauth)\nsearchGroup(\"懷筑古箏社\",fb.oauth)\ngetLikes(\"Lily chang\", n = 100, fb.oauth)\n\nlibrary(httr)\ndcard<-\"https://www.dcard.tw/api/forum/funny/1/\"\nres = GET(dcard)\nres_json = contennt(res,as=\"text\")\n",
+    "created" : 1476772100042.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "2529887514",
+    "id" : "7C1523F8",
+    "lastKnownWriteTime" : 3419473789575321445,
+    "last_content_update" : 1476774002152,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

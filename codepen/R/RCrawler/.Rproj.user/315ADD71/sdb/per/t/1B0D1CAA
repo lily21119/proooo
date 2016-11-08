@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "\nlibrary(httr)\nlibrary(XML)\n\n####################################################\n# getStoreData via GET Method\n####################################################\n# res = GET(\"http://emap.pcsc.com.tw/EMapSDK.aspx?commandid=SearchStore&city=%E5%8F%B0%E5%8C%97%E5%B8%82&town=%E5%A4%A7%E5%AE%89%E5%8D%80&roadname=&ID=&StoreName=&SpecialStore_Kind=&isDining=False&isParking=False&isLavatory=False&isATM=False&is7WiFi=False&isIce=False&isHotDog=False&isHealthStations=False&isIceCream=False&isOpenStore=False&isFruit=False&isCityCafe=False&address=\")\n# node = xmlParse(content(res,as=\"text\"))\n# View(xmlToDataFrame(node[\"//GeoPosition\"]))\n\n####################################################\n# getStoreData via POST city and town\n####################################################\n# connector\nres = POST(\"http://emap.pcsc.com.tw/EMapSDK.aspx\",\n           body=list(commandid=\"SearchStore\",city=\"台北市\",town=\"大安區\"))\n\n# parser\ndoc = content(res,as=\"text\")\nnode = xmlParse(content(res,as=\"text\"))\nView(xmlToDataFrame(node[\"//GeoPosition\"]))\n\n\n####################################################\n# getTown via POST cityid\n####################################################\n# connector\nres = POST(\"http://emap.pcsc.com.tw/EMapSDK.aspx\",\n           body=list(commandid=\"GetTown\",cityid=\"01\"))\n\n# parser\nnode = xmlParse(content(res,as=\"text\"))\nView(xmlToDataFrame(node[\"//GeoPosition\"]))\n\n\n####################################################\n# getCityCodes via POST cityid\n####################################################\nres = GET(\"http://emap.pcsc.com.tw/lib/areacode.js\")\nresText = content(res,\"text\",encoding = \"utf8\")\nmatches = gregexpr(\"AreaNode[(][^,]+(,[^,]+){3}\",resText)\nunlist(regmatches(resText,matches))\ncityCodesStr = unlist(regmatches(resText,matches))\n\nstr = cityCodesStr[2]\nstr\nmatches = gregexpr(\"[']([^']+)[']\",str)\nunlist(regmatches(str,matches))\n\ncityCodes = lapply(cityCodesStr,function(str){\n  matches = gregexpr(\"[']([^']+)[']\",str)\n  return(unlist(regmatches(str,matches)))\n})\n\ncityCodes = lapply(cityCodesStr[2:length(cityCodesStr)],function(str){\n  matches = gregexpr(\"[']([^']+)[']\",str)\n  return(gsub(\"'\",\"\",unlist(regmatches(str,matches))))\n})\n\ncityCodesDf = data.frame(do.call(rbind,cityCodes),stringsAsFactors = FALSE)\ncolnames(cityCodesDf) = c(\"cityName\",\"cityCode\")\nView(cityCodesDf)\n",
+    "created" : 1476768225991.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "404588217",
+    "id" : "1B0D1CAA",
+    "lastKnownWriteTime" : 1476771395,
+    "last_content_update" : 1476771395491,
+    "path" : "C:/Users/user/Desktop/RCrawler101-201504/CaseStudies/Case4SevenElevenAddress/try.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

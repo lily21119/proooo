@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "library(httr)\n\ntoken = \"\"\nurl = sprintf(\"https://graph.facebook.com/v2.3/me?access_token=%s\",token)\nres = GET(url)\ncontent(res)\n\n\nurl = sprintf(\"https://graph.facebook.com/v2.3/me/feed?access_token=%s\",token)\nres = GET(url)\ncontent(res)\n\n\nres = POST(\"https://graph.facebook.com/v2.3/me/feed\",\n           body=list(message=sprintf(\"[TEST Posting Message] %s At %s\",\"httr 測試\",Sys.time()),\n                     access_token=token))\n\ncontent(res)\npostId = content(res)$id\n\n\nurl = sprintf(\"https://graph.facebook.com/v2.3/%s?access_token=%s\",postId,token)\nres = DELETE(url)\ncontent(res)\n",
+    "created" : 1476770419523.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4020831026",
+    "id" : "FB614B3",
+    "lastKnownWriteTime" : 1476767852,
+    "last_content_update" : 1476767852,
+    "path" : "C:/Users/user/Desktop/RCrawler101-201504/CaseStudies/Case7FacebookAPI/try.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

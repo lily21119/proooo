@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "#清除記憶體=旁邊的小掃把=\nrm(list=ls(all.names = TRUE))\n\n\nlibrary(httr)\nlibrary(rjson)\nlibrary(httpuv)\nlibrary(Rfacebook)\n\n#資料分段，此兩段為固定，所以放這邊~~\nprefex =\"https://graph.facebook.com/v2.8/\"\ntoken  =\"EAACEdEose0cBAMXcegbKnXO6EYHpbbuDj9z6JFGDHwoQUkuxvEpqZBEVJ6Dj7DeLWmsctQEdgzrMyPZCmfNXMil63cKYEvQQytWc0xun2Lx53PjjNFxjbzhNsEBPX87wKjbdI0bodjsrtZCrkumhw7R2ZBZCe1E52ZAl4p5vdnKQZDZD\n\n#==============================================================================\n\nattrs  = \"me/friends?access_token=\"\n#融合所有網址\nurl = paste0(prefex,attrs,token)\n#抓資料，資料名稱:res\nres = GET(url)\n#再底下用\"res$\"找到資料在content\n#整理資料，將資料內容整理為text檔，編碼是UTF-8\ndata = content(res)\n#groups是把data裡的東西全部拉長變成一個長長的盒子\ngroups  = matrix(unlist(data$data))\n#定義after在哪兒\nafter   = data$paging$cursors$after\n#nextflg是data底下的paging下的第二個孩子(因為next是R底下的保留單字，所以只能用第幾個表示)\nnextflg = data$paging[2]\n\n#迴圈(當next不等於空白時就不停止)\nwhile( nextflg !=\"\")\n{\n  nextUrl   = paste0(url,\"&after=\",after)\n  nextres   = GET(nextUrl)\n  nextdata  = content(nextres)\n  nextgroups= matrix(unlist(nextdata$data))\n  after     = nextdata$paging$cursors$after\n  nextflg   = data$paging[2]\n}\n\n\n",
+    "created" : 1477371328585.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3552876030",
+    "id" : "2C000DD9",
+    "lastKnownWriteTime" : 1477379990,
+    "last_content_update" : 1477379990597,
+    "path" : "C:/Users/user/Desktop/proooo/codepen/R/facebook crawler/facebook crawler.R",
+    "project_path" : "facebook crawler.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

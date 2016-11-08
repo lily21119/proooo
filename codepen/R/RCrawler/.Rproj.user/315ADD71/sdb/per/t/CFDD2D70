@@ -1,0 +1,28 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1476770150433.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "CFDD2D70",
+    "lastKnownWriteTime" : 0,
+    "last_content_update" : 1476770150433,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "1ex9bwzo2o",
+        "caption" : "xmlToDataFrame(node[\"//GeoPosition\"])",
+        "contentUrl" : "grid_resource/gridviewer.html?env=_rs_no_env&obj=&cache_key=1ex9bwzo2o",
+        "displayedObservations" : 99,
+        "environment" : "_rs_no_env",
+        "object" : "",
+        "totalObservations" : 99,
+        "variables" : 31
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "Sys.getlocale(\"LC_ALL\")\ninstall.packages(\"XML\")\ninstall.packages(\"RCurl\")\ninstall.packages(\"httr\")\nrm(list = ls(all.names = TRUE))\nlibrary(XML)\nlibrary(RCurl)\nlibrary(httr)\nurlPath <- \"https://www.ptt.cc/bbs/movie/index.html\"\ntemp    <- getURL(urlPath, encoding = \"big5\")\nxmldoc  <- htmlParse(temp)\ntitle   <- xpathSApply(xmldoc, \"//div[@class=\\\"title\\\"]\", xmlValue)\ntitle   <- gsub(\"\\n\", \"\", title)\ntitle   <- gsub(\"\\t\", \"\", title)\ntitle\nauthor  <- xpathSApply(xmldoc, \"//div[@class=\\\"author\\\"]\", xmlValue)\npath    <- xpathSApply(xmldoc, \"//div[@class='title']/a//@href\")\ndate    <- xpathSApply(xmldoc, \"//div[@class=\\\"date\\\"]\", xmlValue)\nresponse<- xpathSApply(xmldoc, \"//div[@class=\\\"nrec\\\"]\", xmlValue)\nalldata <- data.frame(title, author, path, date, response)\nwrite.table(alldata, file = \"movie.csv\")\n\n",
+    "created" : 1476585223144.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1507294083",
+    "id" : "F12235BB",
+    "lastKnownWriteTime" : 1476600186,
+    "last_content_update" : 1476600186854,
+    "path" : "C:/Users/user/Desktop/proooo/codepen/R/lu1016/lu1016.R",
+    "project_path" : "lu1016.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

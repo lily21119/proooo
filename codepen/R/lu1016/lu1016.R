@@ -1,0 +1,22 @@
+Sys.getlocale("LC_ALL")
+install.packages("XML")
+install.packages("RCurl")
+install.packages("httr")
+rm(list = ls(all.names = TRUE))
+library(XML)
+library(RCurl)
+library(httr)
+urlPath <- "https://www.ptt.cc/bbs/movie/index.html"
+temp    <- getURL(urlPath, encoding = "big5")
+xmldoc  <- htmlParse(temp)
+title   <- xpathSApply(xmldoc, "//div[@class=\"title\"]", xmlValue)
+title   <- gsub("\n", "", title)
+title   <- gsub("\t", "", title)
+title
+author  <- xpathSApply(xmldoc, "//div[@class=\"author\"]", xmlValue)
+path    <- xpathSApply(xmldoc, "//div[@class='title']/a//@href")
+date    <- xpathSApply(xmldoc, "//div[@class=\"date\"]", xmlValue)
+response<- xpathSApply(xmldoc, "//div[@class=\"nrec\"]", xmlValue)
+alldata <- data.frame(title, author, path, date, response)
+write.table(alldata, file = "movie.csv")
+
