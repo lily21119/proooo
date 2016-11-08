@@ -8,14 +8,6 @@
 <body>
 <script type="text/javascript">
 
-d3.csv("./stocks.csv", 
-
-	function(data)
-	{
-		console.log(data);
-	}
-);
-
 var parseTime = d3.timeParse("%d-%b-%y");
 d3.csv("./stocks.csv", 
 	function(data)
