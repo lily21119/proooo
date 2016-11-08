@@ -20,6 +20,9 @@ var parseTime = d3.timeParse("%d-%b-%y");
 d3.csv("./stocks.csv", 
 	function(data)
 	{
+		
+		var maxy=d3.max(data.close);
+		var miny=d3.min(data.close);
 		var ln = data.length;
 		data.forEach(
 			function(d)
@@ -43,7 +46,8 @@ d3.csv("./stocks.csv",
 		y(
 			function(d) 
 			{ 
-				yset = d.close;
+				
+				yset = (d.close/(maxy-miny))*height;
 				console.log(yset);
 				return yset;
 			});
