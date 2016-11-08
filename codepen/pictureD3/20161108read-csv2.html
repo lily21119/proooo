@@ -4,8 +4,14 @@
   <meta charset="UTF-8" />
   <title>Document</title>
   <script src="https://d3js.org/d3.v4.min.js"></script>
-  <style class="line"></style>
+
 </head>
+
+<style>
+       .line(
+       	      fill:none;
+       	)
+</style>
 <body>
 <script type="text/javascript">
 
@@ -26,8 +32,8 @@ d3.csv("./stocks.csv",
 	    var x = d3.scaleTime().range([0, width]);
         var y = d3.scaleLinear().range([height, 0]);
 	    var valueline = d3.line()
-        x(function(d) { return x(d.date); })
-        y(function(d) { return y(d.close); });
+        .x(function(d) { return x(d.date); })
+        .y(function(d) { return y(d.close); });
        
        ctrl.append("path").
        data([data]).
@@ -38,6 +44,6 @@ d3.csv("./stocks.csv",
 );
 
 
-  
+</script>  
 </body>
 </html>
